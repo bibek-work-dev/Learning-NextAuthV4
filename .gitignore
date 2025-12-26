@@ -11,6 +11,9 @@ server/node_modules
 node_modules
 /node_modules
 client/.next
+
+*/package-lock.json
+
 /.pnp
 .pnp.*
 .yarn/*
