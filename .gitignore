@@ -3,6 +3,9 @@
 # dependencies
 client/node_modules
 
+client/.env
+*/.env
+
 server/node_modules
 */node_modules
 node_modules
