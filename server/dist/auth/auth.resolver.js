@@ -54,6 +54,7 @@ let AuthResolver = class AuthResolver {
         return result;
     }
     async login(loginInput) {
+        console.log('loginInput', loginInput);
         const result = await this.authService.login(loginInput);
         console.log('result', result);
         return result;

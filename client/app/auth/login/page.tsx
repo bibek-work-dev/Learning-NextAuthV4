@@ -1,5 +1,6 @@
 "use client";
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import * as Yup from "yup";
 
@@ -18,8 +19,26 @@ const page = () => {
           password: "",
         }}
         validationSchema={LoginSchema}
-        onSubmit={() => {}}
-        // onSubmit={handleLogin}
+        onSubmit={async (values, { setSubmitting, setFieldError }) => {
+          try {
+            const res = await signIn("credentials", {
+              email: values.email,
+              password: values.password,
+              redirect: false, // IMPORTANT
+            });
+
+            if (res?.error) {
+              setFieldError("email", res.error);
+              return;
+            }
+
+            window.location.href = "/profile/client";
+          } catch (err) {
+            setFieldError("email", "Something went wrong");
+          } finally {
+            setSubmitting(false);
+          }
+        }}
       >
         {({ isSubmitting }) => (
           <Form>

@@ -49,11 +49,12 @@ export class AuthResolver {
   @Mutation(() => RegisterResponse)
   async register(@Args('registerInput') registerInput: RegisterInput) {
     const result = await this.authService.register(registerInput);
-    return result;
+    return { user: result };
   }
 
   @Mutation(() => LoginResponse)
   async login(@Args('loginInput') loginInput: LoginInput) {
+    console.log('loginInput', loginInput);
     const result = await this.authService.login(loginInput);
 
     console.log('result', result);
