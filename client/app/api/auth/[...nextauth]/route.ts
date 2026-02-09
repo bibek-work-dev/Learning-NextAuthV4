@@ -94,8 +94,9 @@ export const authOptions: AuthOptions = {
 
         const data = json.data.login;
 
+        // there lot will acts as a user in jwt also.(it will act as a user depsite not being it). From next auth POV, whatever we return is user.
         return {
-          id: data.user.id,
+          id: data.user.id, // this is the bare minimum that shouyld be returned. Whatever other than id is return, it is our personal choice to do that.()
           name: data.user.name,
           email: data.user.email,
           accessToken: data.accessToken,
@@ -117,7 +118,7 @@ export const authOptions: AuthOptions = {
       user, // only on login // first time we just see whatever is returned from authorize
     }) {
       // token lives here, expiry is checked here, refresh is also triggered here
-      // revocation logic hooks lives here, session lenght is controlled here
+      // revocation logic hooks lives here, session length is controlled here
       console.log("user and token in callbacks", user, token);
       if (user) {
         // you see since you see user just in login, anything we want later
