@@ -121,7 +121,7 @@ export const authOptions: AuthOptions = {
       console.log("user and token in callbacks", user, token);
       if (user) {
         // you see since you see user just in login, anything we want later
-        // must be copied to token and next uath will data system field like iat, exp and other itself.
+        // must be copied to token and next auth will data system field like iat, exp and other itself.
         token.accessToken = user.accessToken;
         token.refreshToken = user.refreshToken;
       }

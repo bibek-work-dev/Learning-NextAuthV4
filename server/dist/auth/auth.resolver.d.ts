@@ -15,7 +15,9 @@ export declare class AuthResolver {
         newAccessToken: string;
         newRefreshToken: string;
     }>;
-    register(registerInput: RegisterInput): Promise<AuthDocument>;
+    register(registerInput: RegisterInput): Promise<{
+        user: AuthDocument;
+    }>;
     login(loginInput: LoginInput): Promise<{
         user: AuthDocument;
         accessToken: string;
